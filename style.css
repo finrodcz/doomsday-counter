@@ -57,7 +57,7 @@ a:hover { color: #993213; border-bottom: 1px solid #993213; }
     visibility: visible;
 }
 
-.next-occurance::before{
+.time-of-change::before{
     content: "on: ";
     visibility: visible;
 }

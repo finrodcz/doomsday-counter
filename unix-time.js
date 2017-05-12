@@ -71,16 +71,16 @@ function createTooltip(tooltip, id)
     timeToChange.id = "time-to-change-"+id;
     timeToChange.className = "time-to-change";
 
-    var nextOccurance = document.createElement("div");
-    nextOccurance.innerHTML = id;
-    nextOccurance.id = "next-occurance-"+id;
-    nextOccurance.className = "next-occurance";
+    var timeOfChange = document.createElement("div");
+    timeOfChange.innerHTML = id;
+    timeOfChange.id = "time-of-change-"+id;
+    timeOfChange.className = "time-of-change";
 
     tooltip.appendChild(preciseTimeText);
     tooltip.appendChild(preciseTime);
     tooltip.appendChild(nextOccuranceText);
     tooltip.appendChild(timeToChange);
-    tooltip.appendChild(nextOccurance);
+    tooltip.appendChild(timeOfChange);
 
 }
 
@@ -219,6 +219,15 @@ function getTime() {
         //var date = new Date(timeToChange*1000);
 
         ttc.innerHTML = outputPreciseTime(timeToChange);
+
+        var timeOfNow = new Date().valueOf();
+        var t = new Date(timeOfNow + timeToChange*1000);
+
+        var toc = document.getElementById("time-of-change-"+i);
+        var m = (t.getMinutes()<10)?"0"+t.getMinutes():t.getMinutes();
+        var s = (t.getSeconds()<10)?"0"+t.getSeconds():t.getSeconds();
+        toc.innerHTML = t.getDate() + "/" + (t.getMonth()+1) + "/" + t.getFullYear() + " " + t.getHours() + ":" + m + ":" + s;
+
     }
 
     //console.log(countTimeToChange(30)+1);
